@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Satoaki's Blog{% endblock %}
+        <!-- Page Header-->
+        {% block header %}
+        <header class="masthead" style="background-image: url({% static 'assets/img/blog-bg.png' %})">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>{{ object.title }}</h1>
+                            <h2 class="subheading">{{ object.content|truncatechars:30 }}</h2>
+                            <span class="meta">
+                                <a href={% url 'blogapp:index' %}>Satoaki's Blog</a>
+                                Posted on {{ object.posted_at }} / Category:
+                                {{ object.category }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        {% endblock %}
+        <!-- Post Content-->
+        {% block contents %}
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p>{{ object.content }}</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <hr>
+        {% endblock %}
